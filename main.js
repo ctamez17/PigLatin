@@ -10,7 +10,7 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-const pigLatin = (inputString) => {
+function pigLatin (inputString) {
   // Your code here
   //step 1: transform word - get word ready for translation
   inputString = transformWord(inputString);
@@ -24,7 +24,8 @@ const pigLatin = (inputString) => {
   */
 
   //step 2: translate word
- translateWord(inputString);
+  let translation = translateWord(inputString);
+  return translation;
 }
 
 function transformWord (inputString)
@@ -33,6 +34,11 @@ function transformWord (inputString)
   if(inputString[0] == ' ')
   {
     inputString = inputString.substring(1);
+  }
+  //remove trailing space
+  if(inputString[inputString.length-1] == ' ')
+  {
+    inputString = inputString.substring(0, inputString.length-1);
   }
   //convert to lowercase
   inputString = inputString.toLowerCase();
@@ -53,45 +59,47 @@ function transformWord (inputString)
   return wordCount;
 }*/
 
-const translateWord = (inputString) =>
+function translateWord (inputString)
 {
+  var translation = "";
    //edge case (1 vowel)
    if(inputString[0] == 'a' || inputString[0] == 'e'|| inputString[0] == 'i' || inputString[0] == 'o'|| inputString[0] == 'u')
    {
-     leadingVowel(inputString);
+     translation = leadingVowel(inputString);
    }
    //edge case (2 consonants)
    else if(inputString[0] != 'a' && inputString[0] != 'e' && inputString[0] != 'i' && inputString[0] != 'o' && inputString[0] != 'u' && inputString[1] != 'a' && inputString[1] != 'e' && inputString[1] != 'i' && inputString[1] != 'o' && inputString[1] != 'u' && inputString[0] != ' ')
    {
-     twoConsonants(inputString);
+     translation = twoConsonants(inputString);
    }
    else
    {
      //typical (1 consonant)
-     typicalCase(inputString);
+     translation = typicalCase(inputString);
    }
+   return translation;
 }
 
-const leadingVowel = (inputString) => 
+function leadingVowel (inputString)
 {
-  console.log("entering leadingVowel function...")
-  console.log("Word = " + inputString)
-  console.log("Full = " + inputString + "yay")
+  let translation = inputString + "yay";
+  return translation;
 }
 
-const twoConsonants = (inputString) => 
+function twoConsonants (inputString)
 {
-  console.log("entering twoConsonants function...")
   let firstTwoLetters = inputString[0] + inputString[1];
   let remainingWord = inputString.substring(2);
-  console.log("Translation: " + remainingWord + firstTwoLetters + "ay");
+  let translation = remainingWord + firstTwoLetters + "ay";
+  return translation;
 }
 
-const typicalCase = (inputString) => 
+function typicalCase (inputString)
 {
   let firstLetter = inputString[0];
   let remainingWord = inputString.substring(1);
-  console.log("Translation: " + remainingWord + firstLetter + "ay");
+  let translation = remainingWord + firstLetter + "ay";
+  return translation;
 }
 
 
@@ -103,6 +111,7 @@ const typicalCase = (inputString) =>
 const getPrompt = () => {
   rl.question('Enter word: ', (answer) => {
     console.log( pigLatin(answer) );
+    return pigLatin(answer);
   });
 }
 
