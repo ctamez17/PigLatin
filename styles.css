@@ -1,0 +1,39 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+#btn {
+    /* display: inline-block; */
+    font-family: 'Roboto', sans-serif;
+    background-color: #4c99bd; /* Green */
+    width: 165px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 28px;
+    
+  }
+
+.input{
+    padding: 10px 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.button{
+    padding: 10px 0;
+}
+
+.output{
+    padding: 10px 0;
+    font-family: 'Roboto', sans-serif;
+}
+
